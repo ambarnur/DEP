@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="100dp"
+    android:padding="10dp"
+    android:id="@+id/parent_layout">
+
+
+    <ImageView
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/icon_lapangan"
+        android:layout_marginRight="6dp"
+        android:src="@drawable/lapangan2"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_title"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_toRightOf="@+id/icon_lapangan"
+        android:gravity="center_vertical"
+        android:text="LAPANGAN A"
+        android:textColor="@color/colorBlack"
+        android:textSize="22sp"/>
+
+
+</RelativeLayout>

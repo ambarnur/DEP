@@ -1,0 +1,75 @@
+package com.net2software.dep;
+
+import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
+
+public class FutsalActivity extends AppCompatActivity {
+    private DatePickerDialog datePickerDialog;
+    private SimpleDateFormat dateFormat;
+    private EditText edit_tanggal;
+    private Button tanggal;
+    private Button btncari;
+
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_futsal);
+
+
+        dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
+        Calendar newDate = Calendar.getInstance();
+
+        edit_tanggal = (EditText) findViewById(R.id.edit_tanggal);
+        tanggal = (Button) findViewById(R.id.btn_tanggal);
+        btncari = (Button) findViewById(R.id.cari);
+        btncari.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(FutsalActivity.this,PilihJenisLapanganActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        edit_tanggal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDateDialog();
+            }
+        });
+    }
+
+    private void showDateDialog() {
+        Calendar newCalendar = Calendar.getInstance();
+        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+
+                edit_tanggal.setText(""+dateFormat.format(newDate.getTime()));
+            }
+            },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
+    }
+
+
+
+
+}

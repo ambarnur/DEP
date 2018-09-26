@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.net2software.dep">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".RegisterActivity"/>
+        <activity android:name=".MainActivity"
+            android:theme="@style/ActivityTheme"/>
+        <activity android:name=".KeretaActivity"
+            android:theme="@style/ActivityTheme"
+            android:label="Cari Tiket Kereta"/>
+        <activity android:name=".RestoranActivity"
+            android:theme="@style/ActivityTheme"
+            android:label="Cari Restoran Terdekat"/>
+        <activity android:name=".HotelActivity"
+            android:theme="@style/ActivityTheme"
+            android:label="Cari Hotel Terdekat"/>
+        <activity android:name=".FutsalActivity"
+            android:theme="@style/ActivityTheme"
+            android:label="Cari Lapangan Futsal"/>
+        <activity android:name=".TravelActivity"
+            android:theme="@style/ActivityTheme"
+            android:label="Cari Tiket Travel"/>
+        <activity android:name=".PesawatActivity"
+            android:theme="@style/ActivityTheme"
+            android:label="Cari Tiket Pesawat"/>
+        <activity android:name=".PilihJenisLapanganActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".PesanActivity"
+            android:theme="@style/SplashTheme"/>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

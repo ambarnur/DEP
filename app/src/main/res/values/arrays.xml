@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="lapangan">
+        <item>NCI FUTSAL</item>
+        <item>PRIMA FUTSAL</item>
+        <item>FISOCER FUTSAL</item>
+        <item>UYI FUTSAL</item>
+        <item>BAJRI SQUARE</item>
+    </string-array>
+</resources>

@@ -1,6 +1,7 @@
 package com.net2software.dep;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,15 +15,21 @@ import java.util.ArrayList;
 
 public class PilihJenisLapanganActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "PilihJenisLapangan";
+   // RecyclerView recyclerView;
 
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageUrls = new ArrayList<>();
 
     @Override
+    public void onBackPressed() {
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.pilih_jenis_lapangan);
         Log.d(TAG, "onCreate: started.");
 
         initImageBitmaps();
@@ -32,13 +39,16 @@ public class PilihJenisLapanganActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
         CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout)findViewById(R.id.collapse_toolbar);
         collapsingToolbarLayout.setTitle("NCI FUTSAL");
 
 
 
         Context context = this;
-        collapsingToolbarLayout.setContentScrimColor(ContextCompat.getColor(context,R.color.colorPrimary));
+        collapsingToolbarLayout.setContentScrimColor(ContextCompat.getColor(context,R.color.colorBackground));
+        collapsingToolbarLayout.setCollapsedTitleTextColor(Color.parseColor("#FFFFFF"));
+        collapsingToolbarLayout.setExpandedTitleColor(Color.parseColor("#FFFFFF"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -66,7 +76,10 @@ public class PilihJenisLapanganActivity extends AppCompatActivity {
     private void initRecyclerView(){
         Log.d(TAG, "initRecyclerView: init recyclerview.");
         RecyclerView recyclerView = findViewById(R.id.rv_main);
+        //ininya engga kepanggil
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mNames, mImageUrls);
+        //disininya null
+        //trus
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }

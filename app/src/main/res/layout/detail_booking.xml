@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kode Booking :"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nama :"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No. Hp :"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lapangan :"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jam Masuk :"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Durasi :"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Harga Perjam :"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:padding="10dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total :"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:padding="10dp"/>
+
+    <Button
+        android:id="@+id/btn_bayar"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
+        android:textColor="@color/colorWhite"
+        android:text="Bayar Sekarang"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="70dp"/>
+
+
+</LinearLayout>

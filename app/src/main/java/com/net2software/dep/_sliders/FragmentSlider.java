@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.os.Bundle;
 
+import com.bumptech.glide.request.RequestOptions;
 import com.net2software.dep.R;
 import com.bumptech.glide.Glide;
 
@@ -36,7 +37,7 @@ public class FragmentSlider extends Fragment{
         ImageView img = (ImageView) view.findViewById(R.id.img);
         Glide.with(getActivity())
                 .load(imageUrls)
-                .placeholder(R.mipmap.ic_launcher)
+                .apply(new RequestOptions().placeholder(R.mipmap.ic_launcher).error(android.R.drawable.alert_dark_frame)) //cari ic_errornya trus ganti ke ic error
                 .into(img);
         return view;
     }

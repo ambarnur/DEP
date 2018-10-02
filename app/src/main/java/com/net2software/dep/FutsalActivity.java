@@ -2,6 +2,7 @@ package com.net2software.dep;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +24,6 @@ import java.util.Locale;
 
 public class FutsalActivity extends AppCompatActivity {
     private DatePickerDialog datePickerDialog;
-    private SimpleDateFormat dateFormat;
     private EditText edit_tanggal;
     private Button tanggal;
     private Button btncari;
@@ -35,6 +35,9 @@ public class FutsalActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_futsal);
+
+
+        spinner = findViewById(R.id.spinner);
 
 
         edit_tanggal = (EditText) findViewById(R.id.edit_tanggal);
@@ -58,6 +61,10 @@ public class FutsalActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+
+
+
     }
 
     private void showDateDialog() {
@@ -67,8 +74,21 @@ public class FutsalActivity extends AppCompatActivity {
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(year, monthOfYear, dayOfMonth);
-
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 edit_tanggal.setText(""+dateFormat.format(newDate.getTime()));
+
+                String tempat = spinner.getSelectedItem().toString();
+                String MY_PREFS_NAME = "MyPrefsFile";
+                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                editor.putString("tanggal", ""+dateFormat.format(newDate.getTime()));
+                editor.putString("tempat", ""+tempat);
+
+                editor.apply();
+
+
+
+
+
             }
             },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();

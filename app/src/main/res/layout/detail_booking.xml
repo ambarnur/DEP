@@ -5,19 +5,9 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/kode_booking"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Kode Booking :"
-        android:textColor="@color/colorBlack"
-        android:textSize="20sp"
-        android:padding="10dp"/>
-
-    <TextView
         android:id="@+id/txt_namalengkap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/kode_booking"
         android:text="Nama :"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
@@ -55,6 +45,31 @@
         android:layout_marginRight="5dp"
         android:layout_alignTop="@+id/txt_nohp"/>
 
+
+    <TextView
+        android:id="@+id/txt_tempat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tempat :"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:layout_below="@+id/txt_nohp"/>
+
+    <TextView
+        android:id="@+id/value_tempat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:layout_marginLeft="110dp"
+        android:layout_marginRight="5dp"
+        android:layout_alignTop="@+id/txt_tempat"/>
+
+
+
+
     <TextView
         android:id="@+id/txt_lapangan"
         android:layout_width="match_parent"
@@ -63,7 +78,7 @@
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
         android:padding="10dp"
-        android:layout_below="@+id/txt_nohp"/>
+        android:layout_below="@+id/txt_tempat"/>
 
     <TextView
         android:id="@+id/value_lapangan"
@@ -76,15 +91,38 @@
         android:layout_marginRight="5dp"
         android:layout_alignTop="@+id/txt_lapangan"/>
 
+
     <TextView
-        android:id="@+id/txt_jam_masuk"
+        android:id="@+id/txt_tanggal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Jam Masuk :"
+        android:text="Tanggal :"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
         android:padding="10dp"
         android:layout_below="@+id/txt_lapangan"/>
+
+    <TextView
+        android:id="@+id/value_tanggal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:layout_marginLeft="130dp"
+        android:layout_marginRight="5dp"
+        android:layout_alignTop="@+id/txt_tanggal"/>
+
+
+    <TextView
+        android:id="@+id/txt_jam_masuk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jam :"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:layout_below="@+id/txt_tanggal"/>
 
     <TextView
         android:id="@+id/value_jam_masuk"
@@ -168,7 +206,7 @@
         android:background="@color/colorBackground"
         android:textColor="@color/colorWhite"
         android:text="Bayar Sekarang"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="60dp"
         android:layout_marginLeft="70dp"
         android:layout_below="@+id/txt_total"/>
 

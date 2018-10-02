@@ -53,7 +53,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             public void onClick(View view) {
                 Log.d(TAG, "onClick: clicked on: " + mTvLapangan.get(position));
 
-                Toast.makeText(mContext, mTvLapangan.get(position), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(mContext, PesanActivity.class);
                 intent.putExtra("image_url", mImage.get(position));
                 intent.putExtra("image_name", mTvLapangan.get(position));

@@ -1,6 +1,7 @@
 package com.net2software.dep;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +19,7 @@ import com.bumptech.glide.Glide;
 public class PesanActivity extends AppCompatActivity {
 
     private static final String TAG = "PesanActivity";
-    TextView textView;
+    TextView textView,jam;
     Button button_pesan;
     Spinner spinner;
     EditText nama;
@@ -33,7 +34,7 @@ public class PesanActivity extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.durasi, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
-        String text = spinner.getSelectedItem().toString();
+        jam = findViewById(R.id.tv_jam);
 
         nama = (EditText) findViewById(R.id.ev_namalengkap);
         nohp = (EditText) findViewById(R.id.ev_nohp);
@@ -42,9 +43,8 @@ public class PesanActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PesanActivity.this, PilihJam.class);
-                startActivity(intent);
-                finish();
+                Intent i = new Intent(PesanActivity.this, PilihJam.class);
+                startActivityForResult(i, 1);
             }
         });
 
@@ -52,10 +52,11 @@ public class PesanActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PesanActivity.this, DetailBooking.class);
-                Bundle b = new Bundle();
-                b.putString("nama", nama.getText().toString());
-                b.putString("nohp", nohp.getText().toString());
-                intent.putExtras(b);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("nama", nama.getText().toString());
+                intent.putExtra("nohp", nohp.getText().toString());
+                intent.putExtra("jam", jam.getText().toString());
+                intent.putExtra("durasi", spinner.getSelectedItem().toString());
                 startActivity(intent);
                 finish();
             }
@@ -63,6 +64,7 @@ public class PesanActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getIncomingIntent();
+
 
     }
 
@@ -74,6 +76,10 @@ public class PesanActivity extends AppCompatActivity {
             String imageUrl = getIntent().getStringExtra("image_url");
             String imageName = getIntent().getStringExtra("image_name");
 
+        String MY_PREFS_NAME = "MyPrefsFile";
+        SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putString("lapangan", imageName);
+        editor.apply();
             setImage(imageUrl, imageName);
         }
     }
@@ -90,6 +96,17 @@ public class PesanActivity extends AppCompatActivity {
                 .load(imageUrl)
                 .into(image);
 
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                String strEditText = data.getStringExtra("editTextValue");
+                jam.setText(strEditText);
+
+            }
+        }
     }
 
     @Override

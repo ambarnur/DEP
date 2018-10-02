@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toolbar;
+
+import com.toptoche.searchablespinnerlibrary.SearchableSpinner;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -24,6 +27,8 @@ public class FutsalActivity extends AppCompatActivity {
     private EditText edit_tanggal;
     private Button tanggal;
     private Button btncari;
+    private SearchableSpinner spinner;
+
 
 
     @Override
@@ -31,9 +36,6 @@ public class FutsalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_futsal);
 
-
-        dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
-        Calendar newDate = Calendar.getInstance();
 
         edit_tanggal = (EditText) findViewById(R.id.edit_tanggal);
         tanggal = (Button) findViewById(R.id.btn_tanggal);
@@ -53,6 +55,9 @@ public class FutsalActivity extends AppCompatActivity {
                 showDateDialog();
             }
         });
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     private void showDateDialog() {
@@ -69,7 +74,11 @@ public class FutsalActivity extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-
-
+    @Override
+    public boolean onSupportNavigateUp(){
+        onBackPressed();
+        finish();
+        return true;
+    }
 
 }

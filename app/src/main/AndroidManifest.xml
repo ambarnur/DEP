@@ -45,7 +45,14 @@
         <activity android:name=".PilihJenisLapanganActivity"
             android:theme="@style/AppTheme"/>
         <activity android:name=".PesanActivity"
-            android:theme="@style/SplashTheme"/>
+            android:theme="@style/SplashTheme"
+            android:label="Data Pemesan"/>
+        <activity android:name=".PilihJam"
+            android:theme="@style/ActivityTheme"
+            android:label="Pilih Jam Booking"/>
+        <activity android:name=".DetailBooking"
+            android:theme="@style/ActivityTheme"
+            android:label="Detail Booking"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

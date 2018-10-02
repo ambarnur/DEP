@@ -50,6 +50,7 @@ public class PilihJenisLapanganActivity extends AppCompatActivity {
         collapsingToolbarLayout.setCollapsedTitleTextColor(Color.parseColor("#FFFFFF"));
         collapsingToolbarLayout.setExpandedTitleColor(Color.parseColor("#FFFFFF"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     private void initImageBitmaps(){
@@ -82,5 +83,12 @@ public class PilihJenisLapanganActivity extends AppCompatActivity {
         //trus
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    @Override
+    public boolean onSupportNavigateUp(){
+        onBackPressed();
+        finish();
+        return true;
     }
 }

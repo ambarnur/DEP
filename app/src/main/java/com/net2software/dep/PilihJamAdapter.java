@@ -15,9 +15,7 @@ public class PilihJamAdapter extends RecyclerView.Adapter<PilihJamAdapter.ViewHo
     Context context1;
 
     public PilihJamAdapter(Context context2,String[] values2){
-
     values = values2;
-
     context1 = context2;
 }
 
@@ -25,22 +23,18 @@ public static class ViewHolder extends RecyclerView.ViewHolder{
 
     public TextView textView;
 
-    public ViewHolder(View v){
+        public ViewHolder(View v){
+            super(v);
+            textView = (TextView) v.findViewById(R.id.textview1);
 
-        super(v);
-
-        textView = (TextView) v.findViewById(R.id.textview1);
-
+        }
     }
-}
 
     @Override
     public PilihJamAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
 
         View view1 = LayoutInflater.from(context1).inflate(R.layout.item_pilih_jam,parent,false);
-
         ViewHolder viewHolder1 = new ViewHolder(view1);
-
         return viewHolder1;
     }
 
@@ -48,10 +42,8 @@ public static class ViewHolder extends RecyclerView.ViewHolder{
     public void onBindViewHolder(ViewHolder Vholder, int position){
 
         Vholder.textView.setText(values[position]);
-
-        Vholder.textView.setBackgroundColor(Color.CYAN);
-
-        Vholder.textView.setTextColor(Color.BLUE);
+        Vholder.textView.setBackgroundColor(Color.parseColor("#018786"));
+        Vholder.textView.setTextColor(Color.parseColor("#FFFFFF"));
 
     }
 

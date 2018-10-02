@@ -15,6 +15,7 @@
     android:paddingTop="16dp"
     tools:context=".FutsalActivity">
 
+
     <com.toptoche.searchablespinnerlibrary.SearchableSpinner
         android:id="@+id/spinner"
         android:layout_width="350dp"

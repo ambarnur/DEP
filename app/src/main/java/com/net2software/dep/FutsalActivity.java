@@ -74,14 +74,13 @@ public class FutsalActivity extends AppCompatActivity {
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(year, monthOfYear, dayOfMonth);
-                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
                 edit_tanggal.setText(""+dateFormat.format(newDate.getTime()));
 
-                String tempat = spinner.getSelectedItem().toString();
                 String MY_PREFS_NAME = "MyPrefsFile";
                 SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
                 editor.putString("tanggal", ""+dateFormat.format(newDate.getTime()));
-                editor.putString("tempat", ""+tempat);
+                editor.putString("tempat", ""+spinner.getSelectedItem().toString());
 
                 editor.apply();
 

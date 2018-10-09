@@ -4,6 +4,10 @@ public class Jadwal {
         private String id;
         private String jam;
 
+        public Jadwal(){
+
+    }
+
         public Jadwal(String id, String jam){
             this.id = id;
             this.jam = jam;

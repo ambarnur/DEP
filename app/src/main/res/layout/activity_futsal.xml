@@ -42,6 +42,12 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="46dp"
         android:focusable="false"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/id"
+        android:textSize="20dp"
+        android:layout_below="@id/edit_tanggal"/>
 
     <Button
         android:id="@+id/cari"

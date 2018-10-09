@@ -1,4 +1,4 @@
-package com.net2software.dep;
+package com.net2software.dep.adapter;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;

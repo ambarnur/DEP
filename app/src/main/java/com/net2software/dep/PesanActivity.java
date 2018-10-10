@@ -23,9 +23,14 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
 import com.net2software.dep.app.AppController;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -37,6 +42,7 @@ import java.util.Map;
 public class PesanActivity extends AppCompatActivity {
 
     TextView textView,jam,nama_lapangan;
+    ImageView gambar_lapangan;
     Button button_pesan;
     Spinner spinner;
     EditText nama;
@@ -67,7 +73,7 @@ public class PesanActivity extends AppCompatActivity {
         nama = (EditText) findViewById(R.id.ev_namalengkap);
         nohp = (EditText) findViewById(R.id.ev_nohp);
         button_pesan = (Button) findViewById(R.id.btn_pesan);
-
+        gambar_lapangan = findViewById(R.id.image_pesan);
         textView = (TextView) findViewById(R.id.tv_pilih_jam);
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +103,7 @@ public class PesanActivity extends AppCompatActivity {
                 intent.putExtra("nohp", nohp.getText().toString());
                 intent.putExtra("jam", jam.getText().toString());
                 intent.putExtra("durasi", spinner.getSelectedItem().toString());
+                intent.putExtra("id_jadwal",""+jadwal_id);
                 startActivity(intent);
                 finish();
             }
@@ -114,8 +121,22 @@ public class PesanActivity extends AppCompatActivity {
             Log.d(TAG, "getIncomingIntent: found intent extras");
 
             String imageName = getIntent().getStringExtra("nama");
-
+            String image = getIntent().getStringExtra("gambar");
             nama_lapangan.setText(""+imageName);
+            Picasso.with(getApplicationContext()).load(Server.URL_IMAGE + image)
+                    .networkPolicy(NetworkPolicy.NO_CACHE)
+                    .memoryPolicy(MemoryPolicy.NO_CACHE)
+                    .into(gambar_lapangan, new Callback(){
+                        @Override
+                        public void onSuccess() {
+
+                        }
+
+                        @Override
+                        public void onError() {
+
+                        }
+                    });
         String MY_PREFS_NAME = "MyPrefsFile";
         SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
         editor.putString("lapangan", imageName);

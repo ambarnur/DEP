@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -32,6 +33,10 @@ import com.net2software.dep.app.AppController;
 import com.net2software.dep.model.Data;
 import com.net2software.dep.model.Jadwal;
 import com.net2software.dep.model.Lapangan;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.NetworkPolicy;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -62,14 +67,17 @@ public class PilihJenisLapanganActivity extends AppCompatActivity {
         String MY_PREFS = "id";
         SharedPreferences pref = getSharedPreferences(MY_PREFS, MODE_PRIVATE);
         String id = pref.getString("id", null);
+        String image = pref.getString("gambar", null);
         if (id !=null){
 
         final String tempat_id = pref.getString("id", "No name defined");//"No name defined" is the default value.
-        LoadJson(tempat_id);
+
+            LoadJson(tempat_id);
         }
 
+
         recyclerView = findViewById(R.id.rv_main);
-        adapter = new RecyclerViewAdapter(LapangaArraylist);
+        adapter = new RecyclerViewAdapter(PilihJenisLapanganActivity.this,LapangaArraylist);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         recyclerView.addOnItemTouchListener( new RecyclerItemClickListener(context, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
@@ -85,6 +93,7 @@ public class PilihJenisLapanganActivity extends AppCompatActivity {
                         Intent intent = new Intent(PilihJenisLapanganActivity.this,PesanActivity.class);
                         intent.putExtra("nama", ""+lapangan.getNama());
                         intent.putExtra("id", ""+lapangan.getId());
+                        intent.putExtra("gambar",""+lapangan.getGambar());
                         startActivity(intent);
                         finish();
 
@@ -100,6 +109,7 @@ public class PilihJenisLapanganActivity extends AppCompatActivity {
 
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.MyToolbar);
+        ImageView gambar_tempat = findViewById(R.id.bgheader);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         String MY_PREFS_NAME = "MyPrefsFile";
@@ -120,7 +130,28 @@ public class PilihJenisLapanganActivity extends AppCompatActivity {
             collapsingToolbarLayout.setCollapsedTitleTextColor(Color.parseColor("#FFFFFF"));
             collapsingToolbarLayout.setExpandedTitleColor(Color.parseColor("#FFFFFF"));
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+            if(image !=null){
+                final String gambar = pref.getString("gambar", "No name defined");//"No name defined" is the default value.
+
+            Picasso.with(getApplicationContext()).load(Server.URL_IMAGE + gambar)
+                    .networkPolicy(NetworkPolicy.NO_CACHE)
+                    .memoryPolicy(MemoryPolicy.NO_CACHE)
+                    .into(gambar_tempat, new Callback(){
+                        @Override
+                        public void onSuccess() {
+
+                        }
+
+                        @Override
+                        public void onError() {
+
+                        }
+                    });
+            }
         }
+
 
     }
 
@@ -151,10 +182,12 @@ public class PilihJenisLapanganActivity extends AppCompatActivity {
                                 String id_lapangan = jsonObject.getString("id");
                                 String nama_lapangan = jsonObject.getString("nama");
                                 String keterangan_lapangan = jsonObject.getString("ket");
+                                String gambar_lapangan = jsonObject.getString("gambar");
                                 Lapangan Lp = new Lapangan();
                                 Lp.setId(id_lapangan);
                                 Lp.setNama(nama_lapangan);
                                 Lp.setKeterangan(keterangan_lapangan);
+                                Lp.setGambar(gambar_lapangan);
                                 LapangaArraylist.add(Lp);
                             }
                         }else{

@@ -26,7 +26,6 @@
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
                 android:fitsSystemWindows="true"
-                android:background="@drawable/lapangan_futsal"
                 app:layout_collapseMode="pin"/>
 
             <android.support.v7.widget.Toolbar

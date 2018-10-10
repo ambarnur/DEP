@@ -72,6 +72,7 @@ public class FutsalActivity extends AppCompatActivity {
                 String MY_PREFS = "id";
                 SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS, MODE_PRIVATE).edit();
                 editor.putString("id", ""+datas.get(position).getId());
+                editor.putString("gambar",""+datas.get(position).getGambar());
                 editor.apply();
 
             }
@@ -122,6 +123,7 @@ public class FutsalActivity extends AppCompatActivity {
                 editor.putString("tanggal", ""+dateFormat.format(newDate.getTime()));
                 editor.putString("tempat", ""+spinner.getSelectedItem().toString());
 
+
                 editor.apply();
 
 
@@ -151,6 +153,7 @@ public class FutsalActivity extends AppCompatActivity {
                         Data mp = new Data();
                         mp.setId(tempat.getInt("id"));
                         mp.setNama(tempat.getString("nama"));
+                        mp.setGambar(tempat.getString("gambar"));
                         datas.add(mp);
                     } catch (JSONException e) {
                         e.printStackTrace();

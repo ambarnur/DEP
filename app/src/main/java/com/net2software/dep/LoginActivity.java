@@ -143,8 +143,10 @@ public class LoginActivity extends AppCompatActivity {
 
                     // Check for error node in json
                     if (code == 200) {
+                        String id_user = jObj.getString("id");
                         String email = jObj.getString(TAG_EMAIL);
                         String password = jObj.getString(TAG_PASSWORD);
+
 
                         Log.e("Successfully Login!", jObj.toString());
 
@@ -154,6 +156,7 @@ public class LoginActivity extends AppCompatActivity {
                         editor.putBoolean(session_status, true);
                         editor.putString(TAG_PASSWORD, password);
                         editor.putString(TAG_EMAIL, email);
+                        editor.putString("id_user",id_user);
                         editor.commit();
 
                         Toast.makeText(getApplicationContext(), jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();

@@ -83,7 +83,7 @@ public class DetailBooking extends AppCompatActivity {
             nomor.setText(" "+bundle.getString("nohp"));
             jam.setText(" "+bundle.getString("jam"));
             durasi.setText(" "+bundle.getString("durasi"));
-            String id_jadwal = "1";
+            String id_jadwal = (""+bundle.getString("id_jadwal"));
 
         LoadJson(id_jadwal);
 

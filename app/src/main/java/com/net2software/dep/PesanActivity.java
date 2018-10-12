@@ -54,6 +54,7 @@ public class PesanActivity extends AppCompatActivity {
     private static final String TAG_CODE = "code";
     private static final String TAG_MESSAGE = "message";
 
+    private String id_jadwal;
     String tag_json_obj = "json_obj_req";
 
 
@@ -94,16 +95,16 @@ public class PesanActivity extends AppCompatActivity {
                 Time today = new Time(Time.getCurrentTimezone());
                 today.setToNow();
                 String jam_pesan = today.format("%k:%M:%S");
-                String jadwal_id = "1";
 
-                LoadJsonPesan(jadwal_id,nama_pemesan,no_hp,tanggal,jam_pesan);
+
+                LoadJsonPesan(id_jadwal,nama_pemesan,no_hp,tanggal,jam_pesan);
                 Intent intent = new Intent(PesanActivity.this, DetailBooking.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("nama", nama.getText().toString());
                 intent.putExtra("nohp", nohp.getText().toString());
                 intent.putExtra("jam", jam.getText().toString());
                 intent.putExtra("durasi", spinner.getSelectedItem().toString());
-                intent.putExtra("id_jadwal",""+jadwal_id);
+                intent.putExtra("id_jadwal",id_jadwal);
                 startActivity(intent);
                 finish();
             }
@@ -151,7 +152,7 @@ public class PesanActivity extends AppCompatActivity {
             if(resultCode == RESULT_OK) {
                 String strEditText = data.getStringExtra("editTextValue");
                 jam.setText(strEditText);
-                final String jadwal_id = data.getStringExtra("id_jadwal");
+                id_jadwal = data.getStringExtra("id_jadwal");
 
             }
         }

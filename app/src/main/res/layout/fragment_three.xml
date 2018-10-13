@@ -53,6 +53,7 @@
 
 
                     <TextView
+                        android:id="@+id/username"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
                         android:layout_marginRight="5dp"
@@ -60,11 +61,13 @@
                         android:imeOptions="actionNext"
                         android:text="User Name"
                         android:textColor="@color/colorBlack"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:drawableRight="@drawable/ic_create_black_24dp"/>
 
                     <TextView
+                        android:id="@+id/email_address"
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
                         android:layout_marginTop="20dp"
                         android:imeOptions="actionNext"
@@ -109,7 +112,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="113dp"
-                    android:src="@drawable/ic_create_black_24dp" />
+                    android:src="@drawable/ic_add_a_photo_black_24dp" />
 
             </RelativeLayout>
 

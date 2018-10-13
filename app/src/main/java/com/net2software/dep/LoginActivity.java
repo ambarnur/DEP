@@ -19,6 +19,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.net2software.dep.app.AppController;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -47,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
     public final static String TAG_PASSWORD = "password";
 
     String tag_json_obj = "json_obj_req";
-
+    private String email_res,password_res,id_user,username;
     SharedPreferences sharedpreferences;
     Boolean session = false;
     String email,password;
@@ -139,33 +140,42 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     JSONObject jObj = new JSONObject(response);
                     code = jObj.getInt(TAG_CODE);
-
+                    boolean status = jObj.getBoolean("status");
 
                     // Check for error node in json
                     if (code == 200) {
-                        String id_user = jObj.getString("id");
-                        String email = jObj.getString(TAG_EMAIL);
-                        String password = jObj.getString(TAG_PASSWORD);
+                            email_res = jObj.getString(TAG_EMAIL);
+                            password_res = jObj.getString(TAG_PASSWORD);
+                            id_user = jObj.getString("id");
+                            username = jObj.getString("name");
+
+                        String MY_USER = "id_user";
+                        SharedPreferences.Editor edit = getSharedPreferences(MY_USER, MODE_PRIVATE).edit();
+                        edit.putString("user_id", ""+id_user);
+                        edit.putString("email", ""+email_res);
+                        edit.putString("username", ""+username);
+                        edit.apply();
+
 
 
                         Log.e("Successfully Login!", jObj.toString());
 
 
-                        // menyimpan login ke session
-                        SharedPreferences.Editor editor = sharedpreferences.edit();
-                        editor.putBoolean(session_status, true);
-                        editor.putString(TAG_PASSWORD, password);
-                        editor.putString(TAG_EMAIL, email);
-                        editor.putString("id_user",id_user);
-                        editor.commit();
+                            // menyimpan login ke session
+                            SharedPreferences.Editor editor = sharedpreferences.edit();
+                            editor.putBoolean(session_status, true);
+                            editor.putString(TAG_PASSWORD, password_res);
+                            editor.putString(TAG_EMAIL, email_res);
+                            editor.commit();
 
-                        Toast.makeText(getApplicationContext(), jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
-                        // Memanggil main activity
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        intent.putExtra(TAG_PASSWORD, password);
-                        intent.putExtra(TAG_EMAIL, email);
-                        finish();
-                        startActivity(intent);
+                            Toast.makeText(getApplicationContext(), jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
+                            // Memanggil main activity
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            intent.putExtra(TAG_PASSWORD, password);
+                            intent.putExtra(TAG_EMAIL, email);
+                            finish();
+                            startActivity(intent);
+
                     } else {
                         Toast.makeText(getApplicationContext(),
                                 jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();

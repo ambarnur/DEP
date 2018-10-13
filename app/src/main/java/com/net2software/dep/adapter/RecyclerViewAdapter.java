@@ -1,7 +1,6 @@
 package com.net2software.dep.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 
 import com.net2software.dep.R;
 import com.net2software.dep.Server;
-import com.net2software.dep.model.Jadwal;
 import com.net2software.dep.model.Lapangan;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.MemoryPolicy;

@@ -1,6 +1,7 @@
 package com.net2software.dep;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -53,7 +54,7 @@ public class PesanActivity extends AppCompatActivity {
 
     private static final String TAG_CODE = "code";
     private static final String TAG_MESSAGE = "message";
-
+    private String id_user;
     private String id_jadwal;
     String tag_json_obj = "json_obj_req";
 
@@ -83,8 +84,17 @@ public class PesanActivity extends AppCompatActivity {
                 startActivityForResult(i, 1);
             }
         });
+        String MY_USER = "id_user";
+        SharedPreferences prefs = getSharedPreferences(MY_USER, MODE_PRIVATE);
+        String user_id = prefs.getString("user_id", null);
 
-        button_pesan.setOnClickListener(new View.OnClickListener() {
+        if (user_id   != null) {
+            String lpg = prefs.getString("user_id", "No name defined");//"No name defined" is the default value.
+            id_user = lpg;
+        }
+
+
+            button_pesan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                String nama_pemesan = nama.getText().toString();
@@ -97,7 +107,7 @@ public class PesanActivity extends AppCompatActivity {
                 String jam_pesan = today.format("%k:%M:%S");
 
 
-                LoadJsonPesan(id_jadwal,nama_pemesan,no_hp,tanggal,jam_pesan);
+                LoadJsonPesan(id_jadwal,nama_pemesan,no_hp,tanggal,jam_pesan,id_user);
                 Intent intent = new Intent(PesanActivity.this, DetailBooking.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("nama", nama.getText().toString());
@@ -159,10 +169,10 @@ public class PesanActivity extends AppCompatActivity {
     }
 
     private void LoadJsonPesan ( final String jadwal_id, final String nama,
-                                 final String nohp, final String tanggal, final String jam_pesan){
+                                 final String nohp, final String tanggal, final String jam_pesan,final String user_id){
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
-        pDialog.setMessage("Register ...");
+        pDialog.setMessage("Pesan ...");
         pDialog.show();
 
         StringRequest strReq = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
@@ -179,7 +189,7 @@ public class PesanActivity extends AppCompatActivity {
                     // Check for error node in json
                     if (code == 200) {
 
-                        Log.e("Successfully Register!", jObj.toString());
+                        Log.e("Successfully !", jObj.toString());
 
                         Toast.makeText(getApplicationContext(),
                                 jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
@@ -216,6 +226,7 @@ public class PesanActivity extends AppCompatActivity {
                 params.put("no_hp", nohp);
                 params.put("tanggal",tanggal);
                 params.put("jam_pesan",jam_pesan);
+                params.put("user_id",user_id);
 
                 return params;
             }

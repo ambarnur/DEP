@@ -27,7 +27,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -38,6 +40,9 @@ import java.util.Calendar;
 
 import android.widget.Button;
 
+import static android.app.Activity.RESULT_OK;
+import static android.content.Context.MODE_PRIVATE;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,6 +52,8 @@ public class ThreeFragment extends Fragment {
     private FloatingActionButton floatingActionButton;
     private ImageView imageProfil;
 
+
+    private TextView email,username;
     private static final String IMAGE_DIRECTORY = "/demonuts";
     private int GALLERY = 1, CAMERA = 2;
 
@@ -69,12 +76,36 @@ public class ThreeFragment extends Fragment {
         floatingActionButton = (FloatingActionButton) view.findViewById(R.id.floatingActionButton);
         imageProfil = (ImageView) view.findViewById(R.id.profile);
 
+        username = view.findViewById(R.id.username);
+        email = view.findViewById(R.id.email_address);
+        String MY_USER = "id_user";
+        SharedPreferences prefs = getActivity().getSharedPreferences(MY_USER, MODE_PRIVATE);
+        String user = prefs.getString("username", null);
+        String emailadd = prefs.getString("email", null);
+        if (user   != null) {
+            String lpg = prefs.getString("username", "No name defined");//"No name defined" is the default value.
+            username.setText(""+lpg);
+            if(emailadd !=null){
+                String mail = prefs.getString("email","No name defined");
+                email.setText(""+mail);
+            }
+        }
+
+        username.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), EditUserNameActivity.class);
+                i.putExtra("user",""+username);
+                startActivityForResult(i, 1);
+            }
+        });
+
         Button btn_logout = view.findViewById(R.id.logout);
         btn_logout.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                SharedPreferences sharedpreferences = getActivity().getSharedPreferences(LoginActivity.my_shared_preferences, Context.MODE_PRIVATE);
+                SharedPreferences sharedpreferences = getActivity().getSharedPreferences(LoginActivity.my_shared_preferences, MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedpreferences.edit();
                 editor.putBoolean(LoginActivity.session_status, false);
                 editor.putString(TAG_EMAIL, null);
@@ -146,32 +177,40 @@ public class ThreeFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == getActivity().RESULT_CANCELED) {
-            return;
-        }
-        if (requestCode == GALLERY) {
-            if (data != null) {
-                Uri contentURI = data.getData();
-                try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), contentURI);
-                    String path = saveImage(bitmap);
-                    Toast.makeText(getActivity(), "Image Saved!", Toast.LENGTH_SHORT).show();
-                    imageProfil.setImageBitmap(bitmap);
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                String strEditText = data.getStringExtra("editTextValue");
+                username.setText(strEditText);
+            }
+        }else {
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    Toast.makeText(getActivity(), "Failed!", Toast.LENGTH_SHORT).show();
+
+            if (resultCode == getActivity().RESULT_CANCELED) {
+                return;
+            }
+            if (requestCode == GALLERY) {
+                if (data != null) {
+                    Uri contentURI = data.getData();
+                    try {
+                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), contentURI);
+                        String path = saveImage(bitmap);
+                        Toast.makeText(getActivity(), "Image Saved!", Toast.LENGTH_SHORT).show();
+                        imageProfil.setImageBitmap(bitmap);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        Toast.makeText(getActivity(), "Failed!", Toast.LENGTH_SHORT).show();
+                    }
                 }
+
+            } else if (requestCode == CAMERA) {
+                Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+                imageProfil.setImageBitmap(thumbnail);
+                saveImage(thumbnail);
+                Toast.makeText(getActivity(), "Image Saved!", Toast.LENGTH_SHORT).show();
             }
 
-        } else if (requestCode == CAMERA) {
-            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
-            imageProfil.setImageBitmap(thumbnail);
-            saveImage(thumbnail);
-            Toast.makeText(getActivity(), "Image Saved!", Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
 

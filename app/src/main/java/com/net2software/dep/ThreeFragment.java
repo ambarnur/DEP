@@ -54,6 +54,7 @@ public class ThreeFragment extends Fragment {
 
 
     private TextView email,username;
+    private String id;
     private static final String IMAGE_DIRECTORY = "/demonuts";
     private int GALLERY = 1, CAMERA = 2;
 
@@ -80,6 +81,7 @@ public class ThreeFragment extends Fragment {
         email = view.findViewById(R.id.email_address);
         String MY_USER = "id_user";
         SharedPreferences prefs = getActivity().getSharedPreferences(MY_USER, MODE_PRIVATE);
+        String id_user = prefs.getString("user_id", null);
         String user = prefs.getString("username", null);
         String emailadd = prefs.getString("email", null);
         if (user   != null) {
@@ -88,7 +90,12 @@ public class ThreeFragment extends Fragment {
             if(emailadd !=null){
                 String mail = prefs.getString("email","No name defined");
                 email.setText(""+mail);
+                if (id_user != null){
+                    id = prefs.getString("user_id", "No name defined");
+
+                }
             }
+
         }
 
         username.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +103,7 @@ public class ThreeFragment extends Fragment {
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(), EditUserNameActivity.class);
                 i.putExtra("user",""+username);
+                i.putExtra("id", ""+id);
                 startActivityForResult(i, 1);
             }
         });

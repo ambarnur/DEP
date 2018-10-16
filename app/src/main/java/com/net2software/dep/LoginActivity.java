@@ -143,7 +143,7 @@ public class LoginActivity extends AppCompatActivity {
                     boolean status = jObj.getBoolean("status");
 
                     // Check for error node in json
-                    if (code == 200) {
+                    if (status) {
                             email_res = jObj.getString(TAG_EMAIL);
                             password_res = jObj.getString(TAG_PASSWORD);
                             id_user = jObj.getString("id");

@@ -3,6 +3,7 @@ package com.net2software.dep;
 
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -37,8 +38,19 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 import android.widget.Button;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.net2software.dep.app.AppController;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import static android.app.Activity.RESULT_OK;
 import static android.content.Context.MODE_PRIVATE;
@@ -57,6 +69,10 @@ public class ThreeFragment extends Fragment {
     private String id;
     private static final String IMAGE_DIRECTORY = "/demonuts";
     private int GALLERY = 1, CAMERA = 2;
+    ProgressDialog pd;
+    public static final String url = Server.URL_GETNAME;
+    private static final String TAG = ThreeFragment.class.getSimpleName();
+    String tag_json_obj = "json_obj_req";
 
 
     public static final String TAG_EMAIL = "email";
@@ -79,6 +95,7 @@ public class ThreeFragment extends Fragment {
 
         username = view.findViewById(R.id.username);
         email = view.findViewById(R.id.email_address);
+
         String MY_USER = "id_user";
         SharedPreferences prefs = getActivity().getSharedPreferences(MY_USER, MODE_PRIVATE);
         String id_user = prefs.getString("user_id", null);
@@ -86,7 +103,7 @@ public class ThreeFragment extends Fragment {
         String emailadd = prefs.getString("email", null);
         if (user   != null) {
             String lpg = prefs.getString("username", "No name defined");//"No name defined" is the default value.
-            username.setText(""+lpg);
+//            username.setText(""+lpg);
             if(emailadd !=null){
                 String mail = prefs.getString("email","No name defined");
                 email.setText(""+mail);
@@ -98,11 +115,12 @@ public class ThreeFragment extends Fragment {
 
         }
 
+        loadJSON(id);
         username.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(), EditUserNameActivity.class);
-                i.putExtra("user",""+username);
+                i.putExtra("user",username.getText().toString());
                 i.putExtra("id", ""+id);
                 startActivityForResult(i, 1);
             }
@@ -188,7 +206,10 @@ public class ThreeFragment extends Fragment {
         if (requestCode == 1) {
             if(resultCode == RESULT_OK) {
                 String strEditText = data.getStringExtra("editTextValue");
+                if(strEditText != null){
                 username.setText(strEditText);
+
+                }
             }
         }else {
 
@@ -264,5 +285,75 @@ public class ThreeFragment extends Fragment {
         }
 
 
+    }
+
+
+    public void loadJSON(final String iduser){
+        pd = new ProgressDialog(getActivity());
+        pd.setCancelable(false);
+        pd.setMessage("Memuat...");
+//        showDialog();
+
+        StringRequest strReq = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                Log.e(TAG, "Response: " + response.toString());
+                hideDialog();
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    boolean status = jObj.getBoolean("status");
+                    String code = jObj.getString("code");
+                    String message = jObj.getString("message");
+                    String names = jObj.getString("nama");
+
+                    if (status) {
+                        username.setText(""+names);
+                    } else {
+//                        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+
+                    }
+                } catch (JSONException e) {
+                    // JSON error
+                    e.printStackTrace();
+
+                }
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, " Error: " + error.getMessage());
+                Toast.makeText(getActivity(),
+                        error.getMessage(), Toast.LENGTH_LONG).show();
+
+                hideDialog();
+
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting parameters to login url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("id", iduser);
+                return params;
+            }
+
+        };
+
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(strReq, tag_json_obj);
+    }
+
+
+    private void showDialog() {
+        if (!pd.isShowing())
+            pd.show();
+    }
+
+    private void hideDialog() {
+        if (pd.isShowing())
+            pd.dismiss();
     }
 }

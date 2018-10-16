@@ -48,13 +48,13 @@ public class EditUserNameActivity extends AppCompatActivity {
         if (bundle != null) {
             username.setText(""+bundle.getString("user"));
             id = bundle.getString("id");
-            nama = username.getText().toString();
         }
 
 
         btn_simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                nama = username.getText().toString();
                 loadJSON(id,nama);
                 Intent intent = new Intent();
                 intent.putExtra("editTextValue", ""+username.getText().toString());
@@ -66,8 +66,8 @@ public class EditUserNameActivity extends AppCompatActivity {
         cancle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(EditUserNameActivity.this,ThreeFragment.class);
-                startActivity(i);
+                Intent intent = new Intent();
+                setResult(RESULT_OK, intent);
                 finish();
 
             }
@@ -86,7 +86,7 @@ public class EditUserNameActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 Log.e(TAG, "Response: " + response.toString());
-                hideDialog();
+//                hideDialog();
                 try {
                     JSONObject jObj = new JSONObject(response);
                     boolean status = jObj.getBoolean("status");
@@ -114,7 +114,7 @@ public class EditUserNameActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_LONG).show();
 
-                hideDialog();
+//                hideDialog();
 
             }
         }) {

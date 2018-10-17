@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Toolbar;
 import android.widget.Button;
 
+import com.bumptech.glide.manager.SupportRequestManagerFragment;
 
 
 /**
@@ -46,6 +47,8 @@ public class TwoFragment extends Fragment {
 
         tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
+
+
 
 
         return view;

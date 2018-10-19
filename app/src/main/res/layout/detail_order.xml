@@ -4,75 +4,212 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
-    android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
+    android:padding="16dp"
+    android:background="#ddd"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.net2software.dep.DetailOrder">
 
+    <android.support.v7.widget.CardView
+        android:id="@+id/android_card_view_example"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:elevation="4dp"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/tv_namaa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:padding="5dp"
+                android:paddingBottom="5dp"
+                android:text="Nama :"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_nama"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="200dp"
+                android:padding="5dp"
+                android:paddingBottom="5dp"
+                android:text="aa"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_no_hpp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_nama"
+                android:padding="5dp"
+                android:text="No.Hp :"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/tv_no_hp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tv_nama"
+                android:layout_below="@+id/tv_namaa"
+                android:padding="5dp"
+                android:paddingBottom="5dp"
+                android:text="bbb"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/android_card_view_example1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:elevation="4dp"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tv_tempatt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textColor="@color/colorBlack"
+            android:text="Tempat :"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_tempat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginRight="160dp"
+            android:padding="5dp"
+            android:paddingBottom="5dp"
+            android:text="aa"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_lapangann"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textColor="@color/colorBlack"
+            android:text="Lapangan :"
+            android:textSize="20sp"
+            android:layout_below="@+id/tv_tempat"/>
+
+        <TextView
+            android:id="@+id/tv_lapangan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_tempat"
+            android:layout_below="@+id/tv_tempatt"
+            android:padding="5dp"
+            android:paddingBottom="5dp"
+            android:text="bbb"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_tanggall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textColor="@color/colorBlack"
+            android:text="Tanggal :"
+            android:textSize="20sp"
+            android:layout_below="@+id/tv_lapangan"/>
+
+        <TextView
+            android:id="@+id/tv_tanggal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_lapangan"
+            android:layout_below="@+id/tv_lapangann"
+            android:padding="5dp"
+            android:paddingBottom="5dp"
+            android:text="bbb"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_jam_orderr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:textColor="@color/colorBlack"
+            android:text="Jam :"
+            android:textSize="20sp"
+            android:layout_below="@id/tv_tanggal"/>
+
+        <TextView
+            android:id="@+id/tv_jam_order"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_tanggal"
+            android:layout_below="@+id/tv_tanggall"
+            android:padding="5dp"
+            android:paddingBottom="5dp"
+            android:text="bbb"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp" />
+
+
+    </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/android_card_view_example2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:elevation="4dp"
+            android:padding="16dp">
     <TextView
-        android:id="@+id/tv_nama"
+        android:id="@+id/tv_statuss"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:textColor="@color/colorBlack"
-        android:text="Nama"
+        android:text="Status :"
         android:textSize="20sp"/>
 
-    <TextView
-        android:id="@+id/tv_no_hp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:textColor="@color/colorBlack"
-        android:text="No.Hp"
-        android:textSize="20sp"/>
-
-    <TextView
-        android:id="@+id/tv_tempat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:textColor="@color/colorBlack"
-        android:text="Tempat"
-        android:textSize="20sp"/>
-
-    <TextView
-        android:id="@+id/tv_lapangan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:textColor="@color/colorBlack"
-        android:text="Lapangan"
-        android:textSize="20sp"/>
-
-    <TextView
-        android:id="@+id/tv_tanggal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:textColor="@color/colorBlack"
-        android:text="Tanggal"
-        android:textSize="20sp"/>
-
-    <TextView
-        android:id="@+id/tv_jam_order"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:textColor="@color/colorBlack"
-        android:text="Jam"
-        android:textSize="20sp"/>
-
-    <TextView
-        android:id="@+id/tv_status"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:textColor="@color/colorBlack"
-        android:text="Status"
-        android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="200dp"
+                android:padding="5dp"
+                android:paddingBottom="5dp"
+                android:text="aa"
+                android:textColor="@color/colorBlack"
+                android:textSize="20sp" />
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
     <Button
         android:id="@+id/bayar"
@@ -81,7 +218,7 @@
         android:background="@color/colorBackground"
         android:textColor="@color/colorWhite"
         android:text="Bayar Sekarang"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="60dp"
         android:layout_below="@+id/txt_total"/>
 </LinearLayout>

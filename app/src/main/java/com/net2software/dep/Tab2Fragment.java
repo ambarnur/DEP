@@ -88,13 +88,12 @@ public class Tab2Fragment extends Fragment {
                     @Override public void onItemClick(View view, int position) {
                         OrderSuccess orderSuccess = OrderArraylist.get(position);
                         Intent intent = new Intent(getActivity().getBaseContext(), DetailOrderSelesai.class);
-                        intent.putExtra("nama", ""+orderSuccess.getNama().toString());
-                        intent.putExtra("nohp", ""+orderSuccess.getNo_hp().toString());
-                        intent.putExtra("tempat", ""+orderSuccess.getTempat().toString());
-                        intent.putExtra("lapangan", ""+orderSuccess.getLapangan().toString());
-                        intent.putExtra("tanggal", ""+orderSuccess.getTglmain().toString());
-                        intent.putExtra("jam", ""+orderSuccess.getJam().toString());
-                        intent.putExtra("status", ""+orderSuccess.getStatus().toString());
+                        intent.putExtra("nama", ""+orderSuccess.getNama());
+                        intent.putExtra("nohp", ""+orderSuccess.getNo_hp());
+                        intent.putExtra("tempat", ""+orderSuccess.getTempat());
+                        intent.putExtra("lapangan", ""+orderSuccess.getLapangan());
+                        intent.putExtra("tglmain", ""+orderSuccess.getTglmain());
+                        intent.putExtra("jam", ""+orderSuccess.getJam());
                         getActivity().startActivity(intent);
 
 

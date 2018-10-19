@@ -106,19 +106,23 @@ public class PesanActivity extends AppCompatActivity {
                 Time today = new Time(Time.getCurrentTimezone());
                 today.setToNow();
                 String jam_pesan = today.format("%k:%M:%S");
+                            if (id_jadwal!=null) {
+                            Intent intent = new Intent(PesanActivity.this, DetailBooking.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent.putExtra("nama", nama_pemesan);
+                            intent.putExtra("nohp", no_hp);
+                            intent.putExtra("jam", jam.getText().toString());
+                            intent.putExtra("harga", harga);
+                            intent.putExtra("durasi", spinner.getSelectedItem().toString());
+                            intent.putExtra("id_jadwal", id_jadwal);
+                            startActivity(intent);
+                            finish();
+                            LoadJsonPesan(id_jadwal, nama_pemesan, no_hp, tanggal, jam_pesan, id_user);
 
 
-                LoadJsonPesan(id_jadwal,nama_pemesan,no_hp,tanggal,jam_pesan,id_user);
-                Intent intent = new Intent(PesanActivity.this, DetailBooking.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("nama", nama.getText().toString());
-                intent.putExtra("nohp", nohp.getText().toString());
-                intent.putExtra("jam", jam.getText().toString());
-                intent.putExtra("harga", harga );
-                intent.putExtra("durasi", spinner.getSelectedItem().toString());
-                intent.putExtra("id_jadwal",id_jadwal);
-                startActivity(intent);
-                finish();
+                }else {
+                    Toast.makeText(getApplicationContext(), "Silahkan Pilih jam..", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -131,7 +135,7 @@ public class PesanActivity extends AppCompatActivity {
     private void getIncomingIntent() {
         Log.d(TAG, "getIncomingIntent: checking for incoming intents.");
         if (getIntent().hasExtra("nama")) {
-            Log.d(TAG, "getIncomingIntent: found intent extras");
+            Log.d(TAG, "getIncomingIntent: fou  nd intent extras");
 
             String imageName = getIntent().getStringExtra("nama");
             String image = getIntent().getStringExtra("gambar");

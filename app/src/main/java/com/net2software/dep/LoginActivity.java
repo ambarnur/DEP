@@ -141,7 +141,7 @@ public class LoginActivity extends AppCompatActivity {
                     JSONObject jObj = new JSONObject(response);
                     code = jObj.getInt(TAG_CODE);
                     boolean status = jObj.getBoolean("status");
-
+                    String message = jObj.getString("message");
                     // Check for error node in json
                     if (status) {
                             email_res = jObj.getString(TAG_EMAIL);
@@ -178,7 +178,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     } else {
                         Toast.makeText(getApplicationContext(),
-                                jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
+                                message, Toast.LENGTH_LONG).show();
 
                     }
                 } catch (JSONException e) {

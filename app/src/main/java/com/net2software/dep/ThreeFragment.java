@@ -308,7 +308,11 @@ public class ThreeFragment extends Fragment {
                     String names = jObj.getString("nama");
 
                     if (status) {
+                        if (names !=null){
                         username.setText(""+names);
+                        }else {
+                            username.setText("Name");
+                        }
                     } else {
 //                        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
 

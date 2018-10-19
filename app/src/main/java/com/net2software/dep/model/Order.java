@@ -18,6 +18,7 @@ public class Order {
         this.tanggal = tanggal ;
         this.jam = jam ;
         this.status = status ;
+        this.tglmain = tglmain;
     }
 
 

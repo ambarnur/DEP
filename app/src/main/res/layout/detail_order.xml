@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.net2software.dep.DetailOrder">
+
+    <TextView
+        android:id="@+id/tv_nama"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="@color/colorBlack"
+        android:text="Nama"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/tv_no_hp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="@color/colorBlack"
+        android:text="No.Hp"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/tv_tempat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="@color/colorBlack"
+        android:text="Tempat"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/tv_lapangan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="@color/colorBlack"
+        android:text="Lapangan"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/tv_tanggal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="@color/colorBlack"
+        android:text="Tanggal"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/tv_jam_order"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="@color/colorBlack"
+        android:text="Jam"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="@color/colorBlack"
+        android:text="Status"
+        android:textSize="20sp"/>
+
+    <Button
+        android:id="@+id/bayar"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
+        android:textColor="@color/colorWhite"
+        android:text="Bayar Sekarang"
+        android:layout_marginTop="200dp"
+        android:layout_marginLeft="60dp"
+        android:layout_below="@+id/txt_total"/>
+</LinearLayout>

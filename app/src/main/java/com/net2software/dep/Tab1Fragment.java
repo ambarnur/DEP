@@ -3,6 +3,7 @@ package com.net2software.dep;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -84,9 +85,34 @@ public class Tab1Fragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(orderAdapter);
 
+        recyclerView.addOnItemTouchListener( new RecyclerItemClickListener(context, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        Order order = OrderArraylist.get(position);
+                        Intent intent = new Intent(getActivity().getBaseContext(), DetailOrder.class);
+                        intent.putExtra("nama", ""+order.getNama().toString());
+                        intent.putExtra("nohp", ""+order.getNo_hp().toString());
+                        intent.putExtra("tempat", ""+order.getTempat().toString());
+                        intent.putExtra("lapangan", ""+order.getLapangan().toString());
+                        intent.putExtra("tanggal", ""+order.getTglmain().toString());
+                        intent.putExtra("jam", ""+order.getJam().toString());
+                        intent.putExtra("status", ""+order.getStatus().toString());
+                        getActivity().startActivity(intent);
+
+
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
+
+
         return rootView;
 
     }
+
+
     public void loadJSON(final String iduser){
         pd = new ProgressDialog(getActivity());
         pd.setCancelable(false);

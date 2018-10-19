@@ -3,6 +3,7 @@ package com.net2software.dep;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -82,6 +83,29 @@ public class Tab2Fragment extends Fragment {
         orderAdapter = new OrderSuccessAdapter(getActivity(),OrderArraylist);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(orderAdapter);
+
+        recyclerView.addOnItemTouchListener( new RecyclerItemClickListener(context, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        OrderSuccess orderSuccess = OrderArraylist.get(position);
+                        Intent intent = new Intent(getActivity().getBaseContext(), DetailOrderSelesai.class);
+                        intent.putExtra("nama", ""+orderSuccess.getNama().toString());
+                        intent.putExtra("nohp", ""+orderSuccess.getNo_hp().toString());
+                        intent.putExtra("tempat", ""+orderSuccess.getTempat().toString());
+                        intent.putExtra("lapangan", ""+orderSuccess.getLapangan().toString());
+                        intent.putExtra("tanggal", ""+orderSuccess.getTglmain().toString());
+                        intent.putExtra("jam", ""+orderSuccess.getJam().toString());
+                        intent.putExtra("status", ""+orderSuccess.getStatus().toString());
+                        getActivity().startActivity(intent);
+
+
+                    }
+
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
+
         return rootView;
 
 

@@ -57,6 +57,12 @@
             android:theme="@style/ActivityTheme"
             android:label="Detail Booking"/>
         <activity android:name=".EditUserNameActivity"/>
+        <activity android:name=".DetailOrder"
+            android:theme="@style/ActivityTheme"
+            android:label="Detail Order"/>
+        <activity android:name=".DetailOrderSelesai"
+            android:theme="@style/ActivityTheme"
+            android:label="Detail Order"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

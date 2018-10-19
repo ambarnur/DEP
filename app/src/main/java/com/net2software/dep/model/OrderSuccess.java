@@ -1,15 +1,15 @@
 package com.net2software.dep.model;
 
-public class Order {
+public class OrderSuccess {
     private String id, tglmain;
     private String nama, no_hp, lapangan, tempat;
     private String tanggal, jam, status;
 
-    public Order(){
+    public OrderSuccess(){
 
     }
 
-    public Order(String id, String nama,String tglmain, String no_hp, String lapangan, String tempat, String tanggal, String jam, String status) {
+    public OrderSuccess(String id, String nama, String tglmain, String no_hp, String lapangan, String tempat, String tanggal, String jam, String status) {
         this.id = id ;
         this.nama = nama ;
         this.no_hp = no_hp ;

@@ -115,7 +115,7 @@ public class FutsalActivity extends AppCompatActivity {
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 Calendar newDate = Calendar.getInstance();
                 newDate.set(year, monthOfYear, dayOfMonth);
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 edit_tanggal.setText(""+dateFormat.format(newDate.getTime()));
 
                 String MY_PREFS_NAME = "MyPrefsFile";

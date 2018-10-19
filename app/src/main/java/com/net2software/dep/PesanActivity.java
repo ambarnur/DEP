@@ -56,6 +56,7 @@ public class PesanActivity extends AppCompatActivity {
     private static final String TAG_MESSAGE = "message";
     private String id_user;
     private String id_jadwal;
+    private String harga;
     String tag_json_obj = "json_obj_req";
 
 
@@ -113,6 +114,7 @@ public class PesanActivity extends AppCompatActivity {
                 intent.putExtra("nama", nama.getText().toString());
                 intent.putExtra("nohp", nohp.getText().toString());
                 intent.putExtra("jam", jam.getText().toString());
+                intent.putExtra("harga", harga );
                 intent.putExtra("durasi", spinner.getSelectedItem().toString());
                 intent.putExtra("id_jadwal",id_jadwal);
                 startActivity(intent);
@@ -163,7 +165,7 @@ public class PesanActivity extends AppCompatActivity {
                 String strEditText = data.getStringExtra("editTextValue");
                 jam.setText(strEditText);
                 id_jadwal = data.getStringExtra("id_jadwal");
-
+                harga = data.getStringExtra("harga");
             }
         }
     }
@@ -241,7 +243,7 @@ public class PesanActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp(){
-        onBackPressed();
+
         finish();
         return true;
     }

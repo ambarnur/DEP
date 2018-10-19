@@ -11,8 +11,8 @@ public class Server {
     public static  final String URL_ORDER = "http://10.100.10.108/api/order";
     public static  final String URL_HARGA = "http://10.100.10.108/api/harga";
     public static final String URL_IMAGE = "http://10.100.10.108/uploads/gambar/";
-    public static final String URL_UPDATEUSERNAME = "http://10.100.10.108/api/update/";
-    public static final String URL_GETNAME = "http://10.100.10.108/api/getnama/";
-
+    public static final String URL_UPDATEUSERNAME = "http://10.100.10.108/api/update ";
+    public static final String URL_GETNAME = "http://10.100.10.108/api/getnama";
+    public static final String URL_LISTORDER = "http://10.100.10.108/api/list";
 
 }

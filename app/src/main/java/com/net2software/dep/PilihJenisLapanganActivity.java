@@ -246,8 +246,7 @@ public class PilihJenisLapanganActivity extends AppCompatActivity {
 
     @Override
     public boolean onSupportNavigateUp(){
-        onBackPressed();
-        finish();
+       finish();
         return true;
     }
 }

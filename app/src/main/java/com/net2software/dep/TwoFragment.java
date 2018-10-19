@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -16,16 +17,17 @@ import android.widget.Toolbar;
 import android.widget.Button;
 
 import com.bumptech.glide.manager.SupportRequestManagerFragment;
+import com.net2software.dep.adapter.TabAdapter;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class TwoFragment extends Fragment {
+    private TabAdapter adapter;
     private TabLayout tabLayout;
-
-    Context mContext;
-
+    private ViewPager viewPager;
+    private FragmentActivity myContext;
 
 
     public TwoFragment() {
@@ -40,14 +42,13 @@ public class TwoFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_two, container, false);
 
-        mContext = getActivity();
-
-        ViewPager viewPager = view.findViewById(R.id.view_pager);
-        viewPager.setAdapter(new FragmentPagerAdapter(getActivity().getSupportFragmentManager(),getContext()));
-
-        tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
+        viewPager = (ViewPager) view.findViewById(R.id.viewPager);
+        tabLayout = (TabLayout) view.findViewById(R.id.tabLayout);
+        adapter = new TabAdapter( getFragmentManager());
+        adapter.addFragment(new Tab1Fragment(), "Order");
+        adapter.addFragment(new Tab2Fragment(), "Selesai");
+        viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
-
 
 
 

@@ -1,6 +1,7 @@
 package com.net2software.dep.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,17 +9,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.net2software.dep.R;
-import com.net2software.dep.model.Jadwal;
-import com.net2software.dep.model.Lapangan;
 import com.net2software.dep.model.Order;
+import com.net2software.dep.model.OrderSuccess;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHolder>{
-    private ArrayList<Order> orderList;
+public class OrderSuccessAdapter extends RecyclerView.Adapter<OrderSuccessAdapter.OrderViewHolder>{
+    private ArrayList<OrderSuccess> orderList;
     private Context context;
-    public OrderAdapter(Context context, ArrayList<Order> orderList) {
+    public OrderSuccessAdapter(Context context, ArrayList<OrderSuccess> orderList) {
         this.orderList = orderList;
         this.context = context;
     }
@@ -38,6 +37,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
         holder.orderTanggal.setText(orderList.get(position).getTanggal());
         holder.orderJam.setText(orderList.get(position).getJam());
         holder.tglmain.setText(orderList.get(position).getTglmain());
+        holder.statusorder.setText("Sudah Bayar");
+        holder.statusorder.setTextColor(Color.parseColor("#008000"));
     }
 
     @Override
@@ -47,7 +48,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
 
     static class OrderViewHolder extends RecyclerView.ViewHolder {
-        TextView  orderLapangan, tglmain;
+        TextView  orderLapangan, tglmain,statusorder;
         TextView orderTempat, orderTanggal, orderJam;
 
         public OrderViewHolder(View itemView){
@@ -57,6 +58,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
             orderTanggal = (TextView) itemView.findViewById(R.id.rv_tanggal);
             orderJam = (TextView) itemView.findViewById(R.id.jam);
             tglmain = itemView.findViewById(R.id.tglmain);
+            statusorder = itemView.findViewById(R.id.statusorder);
         }
     }
 

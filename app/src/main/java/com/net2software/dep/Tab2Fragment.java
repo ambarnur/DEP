@@ -1,22 +1,41 @@
 package com.net2software.dep;
 
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.net2software.dep.adapter.OrderAdapter;
+import com.net2software.dep.adapter.OrderSuccessAdapter;
+import com.net2software.dep.app.AppController;
 import com.net2software.dep.model.Order;
+import com.net2software.dep.model.OrderSuccess;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static android.content.Context.MODE_PRIVATE;
 
 
 /**
@@ -28,39 +47,19 @@ public class Tab2Fragment extends Fragment {
     int position;
     private TextView textView;
 
-    private RecyclerView orderList;
+    private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
-    private OrderAdapter orderAdapter;
+    private OrderSuccessAdapter orderAdapter;
     protected Context context;
+    private ArrayList<OrderSuccess> OrderArraylist = new ArrayList<>();
 
-    public static Tab1Fragment newInstance(){
-        return new Tab1Fragment();
-    }
-
-    public Tab2Fragment() {
-        // Required empty public constructor
-    }
+    ProgressDialog pd;
+    public static final String url = Server.URL_LISTORDER;
+    private static final String TAG = Tab1Fragment.class.getSimpleName();
+    String tag_json_obj = "json_obj_req";
 
 
-    public static Fragment getInstance(int position) {
-        Bundle bundle = new Bundle();
-        bundle.putInt("pos", position);
-        Tab1Fragment tabFragment = new Tab1Fragment();
-        tabFragment.setArguments(bundle);
-        return tabFragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        position = getArguments().getInt("pos");
-    }
-
-    @Override
-    public void onAttach(Context context){
-        super.onAttach(context);
-        this.context = context;
-    }
+    private String id;
 
     @Nullable
     @Override
@@ -68,46 +67,127 @@ public class Tab2Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_tab2, container, false);
-        orderList = (RecyclerView) rootView.findViewById(R.id.rv_order_tab2);
-        return rootView;
-    }
+        String MY_USER = "id_user";
+        SharedPreferences prefs = getActivity().getSharedPreferences(MY_USER, MODE_PRIVATE);
+        String id_user = prefs.getString("user_id", null);
+        if (id_user != null){
+            id = prefs.getString("user_id", "No name defined");
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        linearLayoutManager = new LinearLayoutManager(context);
-        orderAdapter = new OrderAdapter();
-        orderList.setLayoutManager(linearLayoutManager);
-        orderList.setAdapter(orderAdapter);
-        loadData();
-
-
-    }
-
-    private void loadData(){
-        List<Order> orderList1 = new ArrayList<>();
-        Order order;
-
-        String nama[] = {"aa", "bb", "cc", "dd"};
-        String nohp = "000000";
-        String lapangan = "A";
-        String tempat = "NCI";
-        String tanggal = "08/10/2018";
-        String jam = "08:00";
-        String status = "Selesai";
-
-        for (int i=0; i < nama.length; i++){
-            order = new Order();
-            order.setId(i+1);
-            order.setNama(nama[i]);
-            order.setNo_hp(nohp);
-            order.setLapangan(lapangan);
-            order.setTempat(tempat);
-            order.setTanggal(tanggal);
-            order.setJam(jam);
-            order.setStatus(status);
         }
-        orderAdapter.addAll(orderList1);
+
+        loadJSON(id);
+
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.rv_order_tab2);
+        linearLayoutManager = new LinearLayoutManager(context);
+        orderAdapter = new OrderSuccessAdapter(getActivity(),OrderArraylist);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(orderAdapter);
+        return rootView;
+
+
+    }
+    public void loadJSON(final String iduser){
+        pd = new ProgressDialog(getActivity());
+        pd.setCancelable(false);
+        pd.setMessage("Memuat...");
+//        showDialog();
+
+        StringRequest strReq = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+                Log.e(TAG, "Response: " + response.toString());
+                hideDialog();
+                try {
+                    JSONObject jObj = new JSONObject(response);
+                    boolean status = jObj.getBoolean("status");
+                    String code = jObj.getString("code");
+                    String message = jObj.getString("message");
+
+                    if (status) {
+                        JSONArray datas = jObj.getJSONArray("data");
+
+                        if (datas !=null) {
+
+
+                            for (int index = 0; index < datas.length(); index++) {
+                                JSONObject jsonObject = datas.getJSONObject(index);
+
+                                Boolean statusOrder = jsonObject.getBoolean("statusorder");
+                                if (statusOrder) {
+                                    String nama = jsonObject.getString("nama");
+                                    String nohp = jsonObject.getString("no_hp");
+                                    String tgl = jsonObject.getString("tanggal");
+                                    String lpg = jsonObject.getString("lapangan");
+                                    String tmp = jsonObject.getString("tempat");
+                                    String tglmain = jsonObject.getString("tanggalmain");
+                                    String jammain = jsonObject.getString("jammain");
+
+                                    OrderSuccess order = new OrderSuccess();
+                                    order.setNama(nama);
+                                    order.setNo_hp(nohp);
+                                    order.setLapangan(lpg);
+                                    order.setTanggal(tgl);
+                                    order.setTempat(tmp);
+                                    order.setJam(jammain);
+                                    order.setTglmain(tglmain);
+                                    OrderArraylist.add(order);
+
+                                }
+                            }
+                        }else{
+                            Toast.makeText(getActivity(), "Data tidak tersedia", Toast.LENGTH_LONG).show();
+
+                        }
+
+
+                    } else {
+//                        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+
+                    }
+                } catch (JSONException e) {
+                    // JSON error
+                    e.printStackTrace();
+
+                }
+                orderAdapter.notifyDataSetChanged();
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.e(TAG, " Error: " + error.getMessage());
+                Toast.makeText(getActivity(),
+                        error.getMessage(), Toast.LENGTH_LONG).show();
+
+                hideDialog();
+
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting parameters to login url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("user_id", iduser);
+                return params;
+            }
+
+        };
+
+        // Adding request to request queue
+        AppController.getInstance().addToRequestQueue(strReq, tag_json_obj);
+    }
+
+
+    private void showDialog() {
+        if (!pd.isShowing())
+            pd.show();
+    }
+
+    private void hideDialog() {
+        if (pd.isShowing())
+            pd.dismiss();
     }
 
     @Override

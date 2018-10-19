@@ -2,9 +2,10 @@
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cardview1"
+    android:id="@+id/cv_jam"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    card_view:cardBackgroundColor="#018786"
     card_view:cardElevation="7dp"
     card_view:contentPadding="7dp"
     card_view:cardCornerRadius="7dp"
@@ -15,11 +16,25 @@
         android:id="@+id/textview1"
         android:text="aaaaaa"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:textSize="20dp"
         android:textStyle="bold"
         android:padding="12dp"
         android:layout_gravity="center"
-        android:gravity="center"
-        />
+        android:gravity="center"/>
+
+
+    <TextView
+
+        android:id="@+id/harga"
+        android:layout_marginTop="20dp"
+        android:text="RP 600000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17dp"
+        android:textColor="#FF7F00"
+        android:textStyle="bold"
+        android:padding="12dp"
+        android:layout_gravity="center"
+        android:gravity="center"/>
 </android.support.v7.widget.CardView>

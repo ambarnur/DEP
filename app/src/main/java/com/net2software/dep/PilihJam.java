@@ -74,6 +74,7 @@ public class PilihJam extends AppCompatActivity {
             Intent intent = new Intent();
             intent.putExtra("editTextValue", ""+jadwal.getJam());
             intent.putExtra("id_jadwal",""+jadwal.getId());
+            intent.putExtra("harga",""+jadwal.getHarga());
             setResult(RESULT_OK, intent);
             finish();
 
@@ -122,9 +123,11 @@ public class PilihJam extends AppCompatActivity {
                                 if(status_jam){
                                     String id_jadwal = jsonObject.getString("id");
                                     String jam = jsonObject.getString("jam");
+                                    String harga = jsonObject.getString("harga");
                                     Jadwal jadwal = new Jadwal();
                                     jadwal.setId(id_jadwal);
                                     jadwal.setJam(jam);
+                                    jadwal.setHarga(harga);
                                     JamArraylist.add(jadwal);
                                 }
 

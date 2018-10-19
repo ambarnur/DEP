@@ -33,7 +33,7 @@ public class DetailOrder extends AppCompatActivity {
             lapanganTxt.setText(" "+bundle.getString("lapangan"));
             tanggalTxt.setText(" "+bundle.getString("tglmain"));
             jamTxt.setText(" "+bundle.getString("jam"));
-            statusTxt.setText(" "+bundle.getString("status"));
+            statusTxt.setText("Belum Bayar");
         }
     }
 

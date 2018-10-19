@@ -2,10 +2,13 @@ package com.net2software.dep;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +30,7 @@ public class DetailBooking extends AppCompatActivity {
 
     TextView nomor,namalengkap,tanggal, jam, durasi, lapangan,harga,total,tempat;
     Context context;
+    Button btn_bayar;
 
 
     @Override
@@ -45,6 +49,14 @@ public class DetailBooking extends AppCompatActivity {
         durasi = findViewById(R.id.value_durasi);
         total = findViewById(R.id.value_total);
 
+        btn_bayar = findViewById(R.id.btn_bayar);
+        btn_bayar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DetailBooking.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         String MY_PREFS_NAME = "MyPrefsFile";
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);

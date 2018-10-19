@@ -48,7 +48,9 @@ public class FutsalActivity extends AppCompatActivity {
 
     private DatePickerDialog datePickerDialog;
     private EditText edit_tanggal;
+    private String tgl, namatempat;
     private Button tanggal;
+
     private Button btncari;
 
 
@@ -91,9 +93,24 @@ public class FutsalActivity extends AppCompatActivity {
         btncari.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+                if(tgl != null){
+                    String MY_PREFS_NAME = "MyPrefsFile";
+                    SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                editor.putString("tanggal", ""+tgl);
+                editor.putString("tempat", ""+spinner.getSelectedItem().toString());
+
+                editor.apply();
                 Intent intent = new Intent(FutsalActivity.this,PilihJenisLapanganActivity.class);
                 startActivity(intent);
                 finish();
+                }else {
+                    Toast.makeText(getApplicationContext(), "anda belum memilih tanggal atau tempat ", Toast.LENGTH_LONG).show();
+
+                }
+
+
             }
         });
 
@@ -106,6 +123,7 @@ public class FutsalActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
     }
 
     private void showDateDialog() {
@@ -117,23 +135,12 @@ public class FutsalActivity extends AppCompatActivity {
                 newDate.set(year, monthOfYear, dayOfMonth);
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 edit_tanggal.setText(""+dateFormat.format(newDate.getTime()));
-
-                String MY_PREFS_NAME = "MyPrefsFile";
-                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                editor.putString("tanggal", ""+dateFormat.format(newDate.getTime()));
-                editor.putString("tempat", ""+spinner.getSelectedItem().toString());
-
-
-                editor.apply();
-
-
-
-
-
+                tgl = dateFormat.format(newDate.getTime());
             }
             },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
         datePickerDialog.show();
     }
+
 
 
     private void loadJson() {

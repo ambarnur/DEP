@@ -33,7 +33,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
-            android:textColor="#FFFF00"
+            android:textColor="#FF7F00"
             android:text="Belum Bayar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

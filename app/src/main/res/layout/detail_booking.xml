@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:background="#ddd"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+
+    <android.support.v7.widget.CardView
+        android:layout_margin="12dp"
+        android:id="@+id/android_card_view_example"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:elevation="4dp"
+            android:padding="10dp">
+
+
+        <TextView
         android:id="@+id/txt_namalengkap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Nama :"
         android:textColor="@color/colorBlack"
-        android:textSize="20sp"
-        android:padding="10dp"/>
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/value_nama"
@@ -19,7 +34,6 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:padding="10dp"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="5dp"
         android:layout_alignTop="@+id/txt_namalengkap"/>
@@ -31,8 +45,7 @@
         android:text="No. Hp :"
         android:layout_below="@+id/txt_namalengkap"
         android:textColor="@color/colorBlack"
-        android:textSize="20sp"
-        android:padding="10dp"/>
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/no_hp_value"
@@ -40,11 +53,24 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:padding="10dp"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="5dp"
         android:layout_alignTop="@+id/txt_nohp"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
+
+    <android.support.v7.widget.CardView
+        android:layout_margin="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:elevation="4dp"
+        android:padding="10dp">
 
     <TextView
         android:id="@+id/txt_tempat"
@@ -52,9 +78,7 @@
         android:layout_height="wrap_content"
         android:text="Tempat :"
         android:textColor="@color/colorBlack"
-        android:textSize="20sp"
-        android:padding="10dp"
-        android:layout_below="@+id/txt_nohp"/>
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/value_tempat"
@@ -62,7 +86,6 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:padding="10dp"
         android:layout_marginLeft="110dp"
         android:layout_marginRight="5dp"
         android:layout_alignTop="@+id/txt_tempat"/>
@@ -77,7 +100,6 @@
         android:text="Lapangan :"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:padding="10dp"
         android:layout_below="@+id/txt_tempat"/>
 
     <TextView
@@ -86,7 +108,6 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:padding="10dp"
         android:layout_marginLeft="110dp"
         android:layout_marginRight="5dp"
         android:layout_alignTop="@+id/txt_lapangan"/>
@@ -99,7 +120,6 @@
         android:text="Tanggal :"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:padding="10dp"
         android:layout_below="@+id/txt_lapangan"/>
 
     <TextView
@@ -108,7 +128,6 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:padding="10dp"
         android:layout_marginLeft="130dp"
         android:layout_marginRight="5dp"
         android:layout_alignTop="@+id/txt_tanggal"/>
@@ -121,7 +140,6 @@
         android:text="Jam :"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:padding="10dp"
         android:layout_below="@+id/txt_tanggal"/>
 
     <TextView
@@ -130,7 +148,6 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:padding="10dp"
         android:layout_marginLeft="130dp"
         android:layout_marginRight="5dp"
         android:layout_alignTop="@+id/txt_jam_masuk"/>
@@ -142,7 +159,6 @@
         android:text="Durasi :"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:padding="10dp"
         android:layout_below="@+id/txt_jam_masuk"/>
 
     <TextView
@@ -151,10 +167,25 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:padding="10dp"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="5dp"
         android:layout_alignTop="@+id/txt_durasi"/>
+
+    </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        android:layout_margin="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:elevation="4dp"
+        android:padding="10dp">
 
     <TextView
         android:layout_width="match_parent"
@@ -162,9 +193,7 @@
         android:text="Harga Perjam :"
         android:id="@+id/txt_harga"
         android:textColor="@color/colorBlack"
-        android:textSize="20sp"
-        android:padding="10dp"
-        android:layout_below="@+id/txt_durasi"/>
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/value_harga"
@@ -172,7 +201,6 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:padding="10dp"
         android:layout_marginLeft="140dp"
         android:layout_marginRight="5dp"
         android:layout_alignTop="@+id/txt_harga"/>
@@ -184,7 +212,6 @@
         android:text="Total :"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:padding="10dp"
         android:layout_below="@+id/txt_harga"/>
 
     <TextView
@@ -193,11 +220,13 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:padding="10dp"
         android:gravity="center"
         android:layout_marginLeft="90dp"
         android:layout_marginRight="20dp"
         android:layout_alignTop="@+id/txt_total"/>
+
+    </RelativeLayout>
+    </android.support.v7.widget.CardView>
 
     <Button
         android:id="@+id/btn_bayar"
@@ -211,4 +240,4 @@
         android:layout_below="@+id/txt_total"/>
 
 
-</RelativeLayout>
+</LinearLayout>

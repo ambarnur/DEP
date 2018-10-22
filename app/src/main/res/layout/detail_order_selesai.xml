@@ -14,16 +14,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
             android:elevation="4dp"
+            android:orientation="vertical"
             android:padding="16dp">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/tv_namaa"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:padding="5dp"
@@ -36,18 +42,21 @@
                 android:id="@+id/tv_nama"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginRight="200dp"
                 android:padding="5dp"
                 android:paddingBottom="5dp"
                 android:text="aa"
                 android:textColor="@color/colorBlack"
                 android:textSize="20sp" />
 
+            </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/tv_no_hpp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_nama"
                 android:padding="5dp"
@@ -57,7 +66,7 @@
 
             <TextView
                 android:id="@+id/tv_no_hp"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/tv_nama"
                 android:layout_below="@+id/tv_namaa"
@@ -66,7 +75,8 @@
                 android:text="bbb"
                 android:textColor="@color/colorBlack"
                 android:textSize="20sp" />
-        </RelativeLayout>
+        </LinearLayout>
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 
 
@@ -76,16 +86,23 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
+            android:orientation="vertical"
             android:elevation="4dp"
             android:padding="16dp">
 
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
             <TextView
                 android:id="@+id/tv_tempatt"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:textColor="@color/colorBlack"
@@ -96,18 +113,20 @@
                 android:id="@+id/tv_tempat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginRight="160dp"
                 android:padding="5dp"
                 android:paddingBottom="5dp"
                 android:text="aa"
                 android:textColor="@color/colorBlack"
                 android:textSize="20sp" />
+        </LinearLayout>
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/tv_lapangann"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:textColor="@color/colorBlack"
@@ -126,10 +145,15 @@
                 android:text="bbb"
                 android:textColor="@color/colorBlack"
                 android:textSize="20sp" />
+        </LinearLayout>
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/tv_tanggall"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:textColor="@color/colorBlack"
@@ -139,7 +163,7 @@
 
             <TextView
                 android:id="@+id/tv_tanggal"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/tv_lapangan"
                 android:layout_below="@+id/tv_lapangann"
@@ -148,10 +172,15 @@
                 android:text="bbb"
                 android:textColor="@color/colorBlack"
                 android:textSize="20sp" />
+        </LinearLayout>
 
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/tv_jam_orderr"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:textColor="@color/colorBlack"
@@ -161,7 +190,7 @@
 
             <TextView
                 android:id="@+id/tv_jam_order"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignLeft="@+id/tv_tanggal"
                 android:layout_below="@+id/tv_tanggall"
@@ -171,8 +200,8 @@
                 android:textColor="@color/colorBlack"
                 android:textSize="20sp" />
 
-
-        </RelativeLayout>
+        </LinearLayout>
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
@@ -181,15 +210,16 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#fff"
+            android:orientation="horizontal"
             android:elevation="4dp"
             android:padding="16dp">
             <TextView
                 android:id="@+id/tv_statuss"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:textColor="@color/colorBlack"
@@ -200,15 +230,12 @@
                 android:id="@+id/tv_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginRight="200dp"
                 android:padding="5dp"
                 android:paddingBottom="5dp"
                 android:text="aa"
                 android:textColor="@color/colorBlack"
                 android:textSize="20sp" />
-        </RelativeLayout>
+        </LinearLayout>
     </android.support.v7.widget.CardView>
 
 

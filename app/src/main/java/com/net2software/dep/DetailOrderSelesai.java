@@ -13,24 +13,24 @@ public class DetailOrderSelesai extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_order_selesai);
 
-        namaTxt = (TextView) findViewById(R.id.tv_nama);
-        jamTxt = (TextView) findViewById(R.id.tv_jam_order);
-        statusTxt = (TextView) findViewById(R.id.tv_status);
-        nohpTxt = (TextView) findViewById(R.id.tv_no_hp);
-        tempatTxt = (TextView) findViewById(R.id.tv_tempat);
-        lapanganTxt = (TextView) findViewById(R.id.tv_lapangan);
-        tanggalTxt = (TextView) findViewById(R.id.tv_tanggal);
+        namaTxt = (TextView) findViewById(R.id.value_nama_selesai);
+        jamTxt = (TextView) findViewById(R.id.value_jam_masuk_selesai);
+        statusTxt = (TextView) findViewById(R.id.value_status_selesai);
+        nohpTxt = (TextView) findViewById(R.id.no_hp_value_selesai);
+        tempatTxt = (TextView) findViewById(R.id.value_tempat_selesai);
+        lapanganTxt = (TextView) findViewById(R.id.value_lapangan_selesai);
+        tanggalTxt = (TextView) findViewById(R.id.value_tanggal_selesai);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null)
         {
-            namaTxt.setText(" "+bundle.getString("nama"));
-            nohpTxt.setText(" "+bundle.getString("nohp"));
-            tempatTxt.setText(" "+bundle.getString("tempat"));
-            lapanganTxt.setText(" "+bundle.getString("lapangan"));
-            tanggalTxt.setText(" "+bundle.getString("tglmain"));
-            jamTxt.setText(" "+bundle.getString("jam"));
-            statusTxt.setText("Selesai");
+            namaTxt.setText(": "+bundle.getString("nama"));
+            nohpTxt.setText(": "+bundle.getString("nohp"));
+            tempatTxt.setText(": "+bundle.getString("tempat"));
+            lapanganTxt.setText(": "+bundle.getString("lapangan"));
+            tanggalTxt.setText(": "+bundle.getString("tglmain"));
+            jamTxt.setText(": "+bundle.getString("jam"));
+            statusTxt.setText(": Selesai");
         }
     }
 }

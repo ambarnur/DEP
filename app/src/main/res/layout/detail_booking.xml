@@ -22,38 +22,40 @@
 
         <TextView
         android:id="@+id/txt_namalengkap"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nama :"
+        android:text="Nama "
         android:textColor="@color/colorBlack"
         android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/value_nama"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
+        android:text="aaaaaa"
         android:textSize="20sp"
-        android:layout_marginLeft="100dp"
+        android:layout_marginLeft="115dp"
         android:layout_marginRight="5dp"
         android:layout_alignTop="@+id/txt_namalengkap"/>
 
     <TextView
         android:id="@+id/txt_nohp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No. Hp :"
+        android:text="No. Hp "
         android:layout_below="@+id/txt_namalengkap"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/no_hp_value"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:layout_marginLeft="100dp"
+        android:text="bbbbbbbb"
+        android:layout_marginLeft="115dp"
         android:layout_marginRight="5dp"
         android:layout_alignTop="@+id/txt_nohp"/>
         </RelativeLayout>
@@ -74,19 +76,20 @@
 
     <TextView
         android:id="@+id/txt_tempat"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tempat :"
+        android:text="Tempat "
         android:textColor="@color/colorBlack"
         android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/value_tempat"
-        android:layout_width="match_parent"
+        android:text="aaaaaaaaaa"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:layout_marginLeft="110dp"
+        android:layout_marginLeft="115dp"
         android:layout_marginRight="5dp"
         android:layout_alignTop="@+id/txt_tempat"/>
 
@@ -95,79 +98,83 @@
 
     <TextView
         android:id="@+id/txt_lapangan"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lapangan :"
+        android:text="Lapangan "
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
         android:layout_below="@+id/txt_tempat"/>
 
     <TextView
         android:id="@+id/value_lapangan"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:layout_marginLeft="110dp"
+        android:text="aaaaaaaaaaaaaa"
+        android:layout_marginLeft="115dp"
         android:layout_marginRight="5dp"
         android:layout_alignTop="@+id/txt_lapangan"/>
 
 
     <TextView
         android:id="@+id/txt_tanggal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tanggal :"
+        android:text="Tanggal "
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
         android:layout_below="@+id/txt_lapangan"/>
 
     <TextView
         android:id="@+id/value_tanggal"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:layout_marginLeft="130dp"
+        android:text="bbbbbbbbb"
+        android:layout_marginLeft="115dp"
         android:layout_marginRight="5dp"
         android:layout_alignTop="@+id/txt_tanggal"/>
 
 
     <TextView
         android:id="@+id/txt_jam_masuk"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Jam :"
+        android:text="Jam "
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
         android:layout_below="@+id/txt_tanggal"/>
 
     <TextView
         android:id="@+id/value_jam_masuk"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:layout_marginLeft="130dp"
+        android:text="ccccccccccc"
+        android:layout_marginLeft="115dp"
         android:layout_marginRight="5dp"
         android:layout_alignTop="@+id/txt_jam_masuk"/>
 
     <TextView
         android:id="@+id/txt_durasi"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Durasi :"
+        android:text="Durasi "
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
         android:layout_below="@+id/txt_jam_masuk"/>
 
     <TextView
         android:id="@+id/value_durasi"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:layout_marginLeft="100dp"
+        android:text="aaaaaaaaa"
+        android:layout_marginLeft="115dp"
         android:layout_marginRight="5dp"
         android:layout_alignTop="@+id/txt_durasi"/>
 
@@ -188,28 +195,29 @@
         android:padding="10dp">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Harga Perjam :"
+        android:text="Harga/jam"
         android:id="@+id/txt_harga"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/value_harga"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:layout_marginLeft="140dp"
+        android:text="aaaaaaaaaa"
+        android:layout_marginLeft="115dp"
         android:layout_marginRight="5dp"
         android:layout_alignTop="@+id/txt_harga"/>
 
     <TextView
         android:id="@+id/txt_total"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total :"
+        android:text="Total "
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
         android:layout_below="@+id/txt_harga"/>
@@ -220,8 +228,8 @@
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        android:gravity="center"
-        android:layout_marginLeft="90dp"
+        android:text="vvvvvvvv"
+        android:layout_marginLeft="115dp"
         android:layout_marginRight="20dp"
         android:layout_alignTop="@+id/txt_total"/>
 

@@ -66,14 +66,14 @@ public class DetailBooking extends AppCompatActivity {
 
         if (restoredText   != null) {
             String lpg = prefs.getString("lapangan", "No name defined");//"No name defined" is the default value.
-            lapangan.setText(""+lpg);
+            lapangan.setText(": "+lpg);
             if(t !=null){
             String tgl = prefs.getString("tanggal", "No name defined");//"No name defined" is the default value.
-                tanggal.setText(""+tgl);
+                tanggal.setText(": "+tgl);
             }
             if(temp !=null){
             String tmp = prefs.getString("tempat", "No name defined");//"No name defined" is the default value.
-                tempat.setText(""+tmp);
+                tempat.setText(": "+tmp);
 
             }
 
@@ -84,12 +84,12 @@ public class DetailBooking extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null)
         {
-            namalengkap.setText(" "+bundle.getString("nama"));
-            nomor.setText(" "+bundle.getString("nohp"));
-            jam.setText(" "+bundle.getString("jam"));
-            durasi.setText(" "+bundle.getString("durasi"));
-            harga.setText("Rp "+bundle.getString("harga"));
-            total.setText("Rp "+bundle.getString("harga"));
+            namalengkap.setText(": "+bundle.getString("nama"));
+            nomor.setText(": "+bundle.getString("nohp"));
+            jam.setText(": "+bundle.getString("jam"));
+            durasi.setText(": "+bundle.getString("durasi"));
+            harga.setText(": Rp "+bundle.getString("harga"));
+            total.setText(": Rp "+bundle.getString("harga"));
         }
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

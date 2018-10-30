@@ -16,24 +16,24 @@ public class DetailOrder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_order);
 
-        namaTxt = (TextView) findViewById(R.id.tv_nama);
-        jamTxt = (TextView) findViewById(R.id.tv_jam_order);
-        statusTxt = (TextView) findViewById(R.id.tv_status);
-        nohpTxt = (TextView) findViewById(R.id.tv_no_hp);
-        tempatTxt = (TextView) findViewById(R.id.tv_tempat);
-        lapanganTxt = (TextView) findViewById(R.id.tv_lapangan);
-        tanggalTxt = (TextView) findViewById(R.id.tv_tanggal);
+        namaTxt = (TextView) findViewById(R.id.value_nama_order);
+        jamTxt = (TextView) findViewById(R.id.value_jam_masuk_order);
+        statusTxt = (TextView) findViewById(R.id.value_status_order);
+        nohpTxt = (TextView) findViewById(R.id.no_hp_value_order);
+        tempatTxt = (TextView) findViewById(R.id.value_tempat_order);
+        lapanganTxt = (TextView) findViewById(R.id.value_lapangan_order);
+        tanggalTxt = (TextView) findViewById(R.id.value_tanggal_order);
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null)
         {
-            namaTxt.setText(" "+bundle.getString("nama"));
-            nohpTxt.setText(" "+bundle.getString("nohp"));
-            tempatTxt.setText(" "+bundle.getString("tempat"));
-            lapanganTxt.setText(" "+bundle.getString("lapangan"));
-            tanggalTxt.setText(" "+bundle.getString("tglmain"));
-            jamTxt.setText(" "+bundle.getString("jam"));
-            statusTxt.setText("Belum Bayar");
+            namaTxt.setText(": "+bundle.getString("nama"));
+            nohpTxt.setText(": "+bundle.getString("nohp"));
+            tempatTxt.setText(": "+bundle.getString("tempat"));
+            lapanganTxt.setText(": "+bundle.getString("lapangan"));
+            tanggalTxt.setText(": "+bundle.getString("tglmain"));
+            jamTxt.setText(": "+bundle.getString("jam"));
+            statusTxt.setText(": Belum Bayar");
         }
     }
 

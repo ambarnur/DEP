@@ -80,12 +80,6 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemReselectedListener(mOnNavigationItemReselectedListener);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.logout, menu);
-        return true;
-    }
 
     int getNavPositionFromMenuItem(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
